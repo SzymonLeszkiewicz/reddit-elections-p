@@ -174,7 +174,16 @@ st.title("NLP Dashboard - Reddit PL")
 
 st.sidebar.header("Global parameters")
 sample_size = st.sidebar.slider("Documents", 500, 10_000, 2_000, step=500)
-df_global = load_data(sample_size)
+
+with st.status("Loading...", expanded=True) as _status:
+    st.write("Reading dataset...")
+    df_global = load_data(sample_size)
+    st.write("Loading Polish NLP model...")
+    get_nlp()
+    st.write("Running NLP pipeline...")
+    process_docs(sample_size)
+    _status.update(label="Ready", state="complete", expanded=False)
+
 st.sidebar.caption(f"Subreddits: {', '.join(df_global['subreddit'].unique())}")
 st.sidebar.caption(f"Documents after filtering: {len(df_global)}")
 

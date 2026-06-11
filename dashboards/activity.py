@@ -9,10 +9,13 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 st.set_page_config(layout="wide")
 st.header('Reddit Activity - Polish Elections 2023')
 
-df = pd.read_csv(DATA_DIR / 'sample_data.csv')
-df['date'] = pd.to_datetime(df['date'], format='%Y-%m-%d %H:%M:%S')
-df['date'] = df['date'].dt.date
-df = df.sort_values(by='date')
+with st.status("Loading data...", expanded=True) as _status:
+    st.write("Reading dataset...")
+    df = pd.read_csv(DATA_DIR / 'sample_data.csv')
+    df['date'] = pd.to_datetime(df['date'], format='%Y-%m-%d %H:%M:%S')
+    df['date'] = df['date'].dt.date
+    df = df.sort_values(by='date')
+    _status.update(label="Ready", state="complete", expanded=False)
 
 fig = px.bar(
     df, x='date', color='subreddit',
