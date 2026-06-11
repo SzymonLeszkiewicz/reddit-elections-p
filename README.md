@@ -24,9 +24,14 @@ network/summary.py           # community overview dashboard
 ## Setup
 
 ```bash
+# dashboards only
 pip install -r requirements.txt
-python -m spacy download pl_core_news_lg
+
+# full pipeline (scraper, sentiment labelling, topic modelling, network)
+pip install -r requirements-dev.txt
 ```
+
+The spaCy model (`pl_core_news_lg`) is installed automatically via the wheel URL in `requirements.txt`.
 
 Copy `.env.example` to `.env` and fill in your Reddit API credentials:
 

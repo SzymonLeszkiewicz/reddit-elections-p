@@ -1,0 +1,24 @@
+# Full pipeline — run locally to scrape and label data
+-r requirements.txt
+
+# Data collection
+praw
+python-dotenv
+tqdm
+qwlist
+
+# Sentiment labelling
+transformers
+torch
+
+# Topic modelling
+gensim
+pyLDAvis
+
+# Network analysis
+networkx
+pyvis
+
+# Notebooks
+jupyter
+ipywidgets
