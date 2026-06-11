@@ -1,13 +1,15 @@
+from pathlib import Path
 import pandas as pd
 import streamlit as st
 import plotly.express as px
 
 EXCLUDED_AUTHORS = ['Zealousideal_Life206', 'random_user_216937', 'zoruunwise', 'dawidaloca']
+DATA_DIR = Path(__file__).parent.parent / "data"
 
 st.set_page_config(layout="wide")
 st.header('Reddit Activity - Polish Elections 2023')
 
-df = pd.read_csv('../data/activity_today_dist2.csv')
+df = pd.read_csv(DATA_DIR / 'sample_data.csv')
 df['date'] = pd.to_datetime(df['date'], format='%Y-%m-%d %H:%M:%S')
 df['date'] = df['date'].dt.date
 df = df.sort_values(by='date')

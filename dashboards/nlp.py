@@ -7,11 +7,14 @@ Run:
 """
 import re
 from itertools import combinations
+from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
 import spacy
 import streamlit as st
+
+DATA_DIR = Path(__file__).parent.parent / "data"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CONSTANTS
@@ -114,7 +117,7 @@ def clean_text(text: str) -> str:
 
 @st.cache_data
 def load_data(n: int) -> pd.DataFrame:
-    df = pd.read_csv("../data/sentiment_analysis_big.csv").dropna(subset=["content"])
+    df = pd.read_csv(DATA_DIR / "sample_data.csv").dropna(subset=["content"])
     df = df.drop_duplicates(subset=["content"])
     df = df[df["content"].str.len() > 15]
     df["content"] = df["content"].apply(clean_text)

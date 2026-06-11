@@ -11,11 +11,14 @@ venv/
 client_secrets.json
 **/client_secrets.json
 
-# Data — generate locally via scraper
-data/*.csv
+# Data — generate locally via scraper (sample_data.csv is committed for demo)
 data/*.pkl
 data/*.gml
 data/*.json
+data/activity*.csv
+data/network_activity.csv
+data/network_topic*.csv
+data/sentiment_analysis*.csv
 
 # spaCy models
 pl_core_news_*/
