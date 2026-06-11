@@ -1,0 +1,32 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+.DS_Store
+.idea/
+
+# Reddit API credentials — never commit
+client_secrets.json
+**/client_secrets.json
+
+# Data — generate locally via scraper
+data/*.csv
+data/*.pkl
+data/*.gml
+data/*.json
+
+# spaCy models
+pl_core_news_*/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Claude Code tooling
+.claude/
+CLAUDE.md
+.playwright-mcp/
+
+# Original assignment archive
+archive/

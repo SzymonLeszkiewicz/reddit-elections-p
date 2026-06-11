@@ -1,0 +1,28 @@
+# Data collection
+praw
+python-dotenv
+tqdm
+qwlist
+
+# Data
+pandas
+numpy
+
+# NLP
+transformers
+torch
+spacy
+gensim
+pyLDAvis
+
+# Visualization / dashboards
+streamlit
+plotly
+pyvis
+
+# Network analysis
+networkx
+
+# Notebooks
+jupyter
+ipywidgets
