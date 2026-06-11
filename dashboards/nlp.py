@@ -96,10 +96,13 @@ def _fmt_entity(name: str) -> str:
 # spaCy MODEL - loaded once, kept in memory (@cache_resource)
 # ─────────────────────────────────────────────────────────────────────────────
 
-@st.cache_resource
+@st.cache_resource(show_spinner="Downloading Polish NLP model (first run only)...")
 def get_nlp():
-    """pl_core_news_lg: better lemmatisation and NER than _sm."""
-    return spacy.load("pl_core_news_lg")
+    try:
+        return spacy.load("pl_core_news_lg")
+    except OSError:
+        spacy.cli.download("pl_core_news_lg")
+        return spacy.load("pl_core_news_lg")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # DATA LOADING AND CLEANING
